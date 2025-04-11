@@ -3,23 +3,31 @@
 using namespace std;
 int main()
 {
-    NumDays obj1;
-    NumDays obj2;
-    NumDays obj3;
-    obj1.SetHours(8);
-    cout << "For 8 hours: ";
-    obj1.Display();
-    obj2.SetHours(12);
-    cout << "For 12 hours: ";
-    obj2.Display();
-    obj3.SetHours(18);
-    cout << "For 18 hours: ";
-    obj3.Display();
-    NumDays obj4;
-    cout << "After adding day1 and day2(8+12 hours): " << endl;
-    obj4 = obj1 + obj2;
-    obj4.Display();
-    NumDays obj5;
-    cout << "After dividing day 3 (18 hours) by 2" << endl;
-    obj5 = obj3 / 2;
+    int choice;
+    cout << "Select a shape to calculate area :" << endl;
+    cout << "1. Rectangle" << endl;
+    cout << "2. Circle" << endl;
+    cout << "Enter your choice" << endl;
+    cin >> choice;
+    if (choice == 1)
+    {
+        double w, l;
+        cout << "Enter width of rectangle:" << endl;
+        cin >> w;
+        cout << "Enter lenght of rectangle:" << endl;
+        cin >> l;
+        Rectangle rec(w, l);
+        cout << "Area of rectangle is : " << rec.getArea();
+    }
+    else if (choice == 2)
+    {
+        double r;
+        cout << "Enter radius of circle:" << endl;
+        cin >> r;
+        Circle c(r);
+        cout << "Area of circle is : " << c.getArea();
+    }
+    else
+        cout << "Invalid Choice" << endl;
+    return 0;
 }

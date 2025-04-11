@@ -1,30 +1,16 @@
 #include <bits/stdc++.h>
 #include "myHeader.h"
 using namespace std;
-void NumDays::SetHours(double h)
+double Rectangle::getArea()
 {
-    hours = h;
+    double area = length * width;
+    return area;
 }
-double NumDays::getHours() const
+double Circle::getArea()
 {
-    return hours;
+    return 2 * 3.14 * radius;
 }
-double NumDays::getDays() const
+double Shape::getArea()
 {
-    return hours / 8;
-}
-void NumDays::Display() const
-{
-    cout << "Hours : " << hours << " -> Days: " << getDays() << endl;
-}
-NumDays NumDays::operator+(NumDays obj)
-{
-    return NumDays(obj.hours + hours);
-}
-NumDays NumDays::operator/(int a)
-{
-    NumDays temp;
-    temp.SetHours(hours / a);
-    temp.Display();
-    return temp;
+    return 0.0;
 }

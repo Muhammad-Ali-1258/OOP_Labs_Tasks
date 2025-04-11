@@ -3,17 +3,25 @@
 using namespace std;
 #ifndef MYHEADER_H
 #define MYHEADER_H
-class NumDays
+class Shape
 {
-    double hours;
+public:
+    double getArea();
+};
+class Rectangle : public Shape
+{
+    double length, width;
 
 public:
-    NumDays(double h = 0) : hours(h) {}
-    void SetHours(double h);
-    double getHours() const;
-    double getDays() const;
-    void Display() const;
-    NumDays operator+(NumDays obj);
-    NumDays operator/(int a);
+    Rectangle(double l, double w) : length(l), width(w) {}
+    double getArea();
+};
+class Circle : public Shape
+{
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+    double getArea();
 };
 #endif
