@@ -3,25 +3,35 @@
 using namespace std;
 #ifndef MYHEADER_H
 #define MYHEADER_H
-class Shape
+class Employee
 {
 public:
-    double getArea();
+    virtual void calculatePay() = 0;
+    virtual void DisplayInfo() const;
 };
-class Rectangle : public Shape
+class FullTimeEmployee : public Employee
 {
-    double length, width;
+    int salary;
+    string name;
 
 public:
-    Rectangle(double l, double w) : length(l), width(w) {}
-    double getArea();
+    FullTimeEmployee(int s, string n) : salary(s), name(n) {}
+    void calculatePay();
+    void DisplayInfo() const;
 };
-class Circle : public Shape
+class PartTimeEmployee : public Employee
 {
-    double radius;
+    int salary;
+    int h_rate;
+    int h_worked;
+    string name;
 
 public:
-    Circle(double r) : radius(r) {}
-    double getArea();
+    void calculatePay();
+    PartTimeEmployee(int r, int w, string s) : h_rate(r), h_worked(w), name(s)
+    {
+        calculatePay();
+    }
+    void DisplayInfo() const;
 };
 #endif

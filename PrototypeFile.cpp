@@ -1,16 +1,26 @@
 #include <bits/stdc++.h>
 #include "myHeader.h"
 using namespace std;
-double Rectangle::getArea()
+void Employee::DisplayInfo() const
 {
-    double area = length * width;
-    return area;
+    cout << "Employee Class DisplayInfo called";
 }
-double Circle::getArea()
+void FullTimeEmployee::calculatePay()
 {
-    return 3.14 * radius * radius;
 }
-double Shape::getArea()
+void FullTimeEmployee::DisplayInfo() const
 {
-    return 0.0;
+    cout << "Full time employee : " << name << endl;
+    cout << "Monthly Salary of full time employee is :" << salary << endl;
+}
+void PartTimeEmployee::calculatePay()
+{
+    salary = h_worked * h_rate;
+}
+void PartTimeEmployee::DisplayInfo() const
+{
+    cout << "Part time employee : " << name << endl;
+    cout << "Hour Worked:" << h_worked << endl;
+    cout << "Hour Rate:" << h_rate << "$" << endl;
+    cout << "Salary of full time employee is :" << salary << endl;
 }
