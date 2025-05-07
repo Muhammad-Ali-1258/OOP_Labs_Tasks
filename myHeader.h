@@ -3,35 +3,63 @@
 using namespace std;
 #ifndef MYHEADER_H
 #define MYHEADER_H
-class Employee
+template <class T>
+class myQueue
 {
-public:
-    virtual void calculatePay() = 0;
-    virtual void DisplayInfo() const;
-};
-class FullTimeEmployee : public Employee
-{
-    int salary;
-    string name;
+    T *front_indicator;
+    T *rear_indicator;
+    int crr, size;
 
 public:
-    FullTimeEmployee(int s, string n) : salary(s), name(n) {}
-    void calculatePay();
-    void DisplayInfo() const;
-};
-class PartTimeEmployee : public Employee
-{
-    int salary;
-    int h_rate;
-    int h_worked;
-    string name;
-
-public:
-    void calculatePay();
-    PartTimeEmployee(int r, int w, string s) : h_rate(r), h_worked(w), name(s)
+    myQueue(int s)
     {
-        calculatePay();
+        size = s;
+        T *queue = new T[size];
+        crr = 0;
+        front_indicator = queue;
+        rear_indicator = queue;
     }
-    void DisplayInfo() const;
+    void enqueue(T val)
+    {
+        if (isFull())
+        {
+            cout << "Queue is Full" << endl;
+            return;
+        }
+        *rear_indicator = val;
+        crr++;
+        rear_indicator++;
+    }
+    void dequeue()
+    {
+        if (isEmpty())
+        {
+            cout << "Queue is already empty" << endl;
+            return;
+        }
+        crr--;
+        front_indicator++;
+    }
+    bool isEmpty()
+    {
+        if (rear_indicator == front_indicator)
+            return true;
+        return false;
+    }
+    bool isFull()
+    {
+        if (crr == size)
+            return true;
+        return false;
+    }
+    void Display()
+    {
+        for (T *i = front_indicator; i != rear_indicator; i++)
+        {
+            cout << *i << " ";
+        }
+        cout << endl;
+    }
 };
+
 #endif
